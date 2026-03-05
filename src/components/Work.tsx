@@ -1,40 +1,7 @@
 import { motion } from "framer-motion";
-import ProjectCard from "./ProjectCard";
-
-const projects = [
-  {
-    title: "Spotify Playlist Discovery",
-    category: "Mobile App Design",
-    description:
-      "Reimagining how users discover and curate playlists through AI-powered recommendations and social features.",
-    image:
-      "https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=800&h=600&fit=crop",
-  },
-  {
-    title: "Fintech Dashboard Redesign",
-    category: "Web Application",
-    description:
-      "A comprehensive redesign of a financial analytics platform, improving data visualization and user workflow.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-  },
-  {
-    title: "Healthcare Booking System",
-    category: "End-to-End UX",
-    description:
-      "Streamlining the patient experience with an intuitive appointment scheduling and telehealth platform.",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-  },
-  {
-    title: "E-commerce Mobile Experience",
-    category: "UX Research & Design",
-    description:
-      "Creating a seamless shopping journey with personalized recommendations and frictionless checkout.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-  },
-];
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/data/projects";
 
 const Work = () => {
   return (
@@ -57,7 +24,40 @@ const Work = () => {
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           {projects.map((project, index) => (
-            <ProjectCard key={project.title} {...project} index={index} />
+            <motion.article
+              key={project.slug}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="group"
+            >
+              <Link to={`/work/${project.slug}`}>
+                <div className="relative overflow-hidden rounded-2xl bg-card mb-6">
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300" />
+                  <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-background flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                    <ArrowUpRight className="w-5 h-5 text-foreground" />
+                  </div>
+                </div>
+
+                <p className="text-accent text-sm font-medium tracking-wide uppercase mb-2">
+                  {project.category}
+                </p>
+                <h3 className="font-heading text-2xl md:text-3xl font-medium text-foreground mb-3 group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {project.description}
+                </p>
+              </Link>
+            </motion.article>
           ))}
         </div>
       </div>
