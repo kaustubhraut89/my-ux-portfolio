@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
+import HeroInteractive from "./HeroInteractive";
 
 const Hero = () => {
   const scrollToWork = () => {
@@ -19,59 +20,70 @@ const Hero = () => {
       <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="max-w-5xl">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-accent font-medium text-sm tracking-widest uppercase mb-6"
-          >
-            UX Designer & Strategist
-          </motion.p>
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-12 lg:gap-16 items-center">
+          <div>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-accent font-medium text-sm tracking-widest uppercase mb-6"
+            >
+              UX Designer & Strategist
+            </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.1] tracking-tight text-foreground mb-8"
-          >
-            Crafting digital
-            <br />
-            experiences that
-            <br />
-            <span className="italic text-accent">resonate</span>
-          </motion.h1>
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="font-heading text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.1] tracking-tight text-foreground mb-8"
+            >
+              Crafting digital
+              <br />
+              experiences that
+              <br />
+              <span className="italic text-accent">resonate</span>
+            </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-xl leading-relaxed mb-12"
-          >
-            I design intuitive, user-centered products that bridge the gap
-            between business goals and human needs. Currently crafting
-            experiences at Spotify.
-          </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="text-muted-foreground text-lg md:text-xl max-w-xl leading-relaxed mb-12"
+            >
+              I design intuitive, user-centered products that bridge the gap
+              between business goals and human needs. Currently crafting
+              experiences at Spotify.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              className="flex flex-wrap gap-4"
+            >
+              <button
+                onClick={scrollToWork}
+                className="group flex items-center gap-3 px-8 py-4 bg-foreground text-primary-foreground font-medium rounded-full hover:bg-accent transition-all duration-300"
+              >
+                View My Work
+                <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+              </button>
+              <a
+                href="#about"
+                className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-secondary transition-all duration-300"
+              >
+                About Me
+              </a>
+            </motion.div>
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="flex flex-wrap gap-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="w-full max-w-md mx-auto lg:max-w-none"
           >
-            <button
-              onClick={scrollToWork}
-              className="group flex items-center gap-3 px-8 py-4 bg-foreground text-primary-foreground font-medium rounded-full hover:bg-accent transition-all duration-300"
-            >
-              View My Work
-              <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
-            </button>
-            <a
-              href="#about"
-              className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-secondary transition-all duration-300"
-            >
-              About Me
-            </a>
+            <HeroInteractive />
           </motion.div>
         </div>
       </div>
