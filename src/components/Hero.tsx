@@ -33,12 +33,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-heading text-5xl md:text-7xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground mb-8"
->
-  Crafting digital experiences
-  <br />
-  that <span className="italic text-accent">resonate</span>
-</motion.h1>
+            className="font-heading text-5xl md:text-7xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground mb-8"
+          >
+            Crafting digital experiences
+            <br />
+            
+            <span className="italic text-accent">that resonate</span>
+          </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -64,10 +65,6 @@ const Hero = () => {
             </button>
             <a
               href="#about"
-              onClick={(e) => {
-    e.preventDefault();
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-  }}
               className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-secondary transition-all duration-300"
             >
               About Me
