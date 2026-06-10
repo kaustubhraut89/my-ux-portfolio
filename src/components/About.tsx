@@ -84,7 +84,7 @@ const About = () => {
             <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-elevated">
               <img
                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=750&fit=crop"
-                alt="Sarah Chen - UX Designer"
+                alt="Kaustubh Raut - UX Designer"
                 className="w-full h-full object-cover"
               />
             </div>

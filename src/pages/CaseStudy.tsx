@@ -18,7 +18,7 @@ const CaseStudy = () => {
   return (
     <>
       <Helmet>
-        <title>{project.title} | Sarah Chen</title>
+        <title>{project.title} | Kaustubh Raut</title>
         <meta name="description" content={project.overview.slice(0, 155)} />
       </Helmet>
 

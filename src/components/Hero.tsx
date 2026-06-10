@@ -12,11 +12,11 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20"
+      className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-12"
     >
       {/* Background accent */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl" />
+      {/* <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-secondary rounded-full blur-3xl" /> */}
 
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-5xl">
@@ -33,24 +33,20 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.1] tracking-tight text-foreground mb-8"
-          >
-            Crafting digital
-            <br />
-            experiences that
-            <br />
-            <span className="italic text-accent">resonate</span>
-          </motion.h1>
+          className="font-heading text-5xl md:text-7xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground mb-8"
+>
+  Crafting digital experiences
+  <br />
+  that <span className="italic text-accent">resonate</span>
+</motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-muted-foreground text-lg md:text-xl max-w-xl leading-relaxed mb-12"
+            className="text-muted-foreground text-lg md:text-x max-w-xl leading-relaxed mb-12"
           >
-            I design intuitive, user-centered products that bridge the gap
-            between business goals and human needs. Currently crafting
-            experiences at Spotify.
+           UI/UX Designer with 1.8+ years of experience crafting user-centered experiences for web, mobile, ERP, and B2B SaaS products. Passionate about simplifying complex workflows through research, design, and product thinking. Combining design expertise with technical knowledge of backend systems and AI technologies to create impactful digital solutions.
           </motion.p>
 
           <motion.div
@@ -68,6 +64,10 @@ const Hero = () => {
             </button>
             <a
               href="#about"
+              onClick={(e) => {
+    e.preventDefault();
+    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  }}
               className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-secondary transition-all duration-300"
             >
               About Me

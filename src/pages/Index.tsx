@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Sarah Chen | UX Designer & Strategist</title>
+        <title>Kaustubh Raut | UX Designer & Strategist</title>
         <meta
           name="description"
           content="UX Designer crafting intuitive digital experiences. View my portfolio of user-centered design work for leading tech companies."

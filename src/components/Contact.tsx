@@ -49,11 +49,11 @@ const Contact = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
           >
             <a
-              href="mailto:hello@sarahchen.design"
+              href="mailto:kaustubhhraut89@gmail.com"
               className="group flex items-center gap-3 px-8 py-4 bg-foreground text-primary-foreground font-medium rounded-full hover:bg-accent transition-all duration-300"
             >
               <Mail className="w-5 h-5" />
-              hello@sarahchen.design
+              kaustubhhraut89@gmail.com
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </motion.div>

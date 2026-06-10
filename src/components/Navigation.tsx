@@ -36,7 +36,7 @@ const Navigation = () => {
             onClick={() => scrollToSection("hero")}
             className="font-heading text-2xl font-semibold tracking-tight text-foreground hover:text-accent transition-colors"
           >
-            Sarah Chen
+            Kaustubh Raut
           </button>
 
           <div className="hidden md:flex items-center gap-8">
@@ -53,7 +53,11 @@ const Navigation = () => {
           </div>
 
           <a
-            href="mailto:hello@sarahchen.design"
+            href="#contact"
+            onClick={(e) => {
+    e.preventDefault();
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  }}
             className="hidden md:inline-flex px-5 py-2.5 bg-foreground text-primary-foreground text-sm font-medium rounded-full hover:bg-accent transition-colors duration-300"
           >
             Let's Talk
