@@ -57,16 +57,11 @@ src/
 
 ```bash
 # Install dependencies
-bun install
+npm install
 
 # Start dev server
-bun run dev
+npm run dev
 
-# Build for production
-bun run build
-
-# Preview production build
-bun run preview
 ```
 
 ## Case Studies
