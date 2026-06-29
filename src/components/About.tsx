@@ -1,14 +1,34 @@
 import { motion } from "framer-motion";
+import Kaustubh_profile from "../assets/Kaustubh_profile.png";
 
 const skills = [
+  "UI/UX Design",
   "User Research",
+  "Product Thinking",
+   "User Flows",
+  "Developer Handoff",
   "Wireframing",
   "Prototyping",
-  "Usability Testing",
   "Design Systems",
-  "Information Architecture",
   "Interaction Design",
-  "Visual Design",
+  "Figma",
+  "Product Design",
+  "Python",
+  "FastAPI",
+  "LLMs",
+  "RAG",
+  "LangChain",
+  "Prompt Engineering",
+  "AI/ML",
+  "REST APIs",
+  "Scikit-learn",
+  "Hugging Face",
+  "Jupyter Notebook",
+  "Google Colab",
+  "Anthropic",
+  "OpenAI",
+  "Vector Databases",
+  "AI Agents"
 ];
 
 const About = () => {
@@ -36,20 +56,13 @@ const About = () => {
 
             <div className="space-y-6 text-muted-foreground leading-relaxed">
               <p>
-                I'm a UX Designer with 6+ years of experience creating digital
-                products that people love to use. Currently, I'm part of the
-                design team at Spotify, where I focus on enhancing the music
-                discovery experience for millions of users worldwide.
+              I'm a UI/UX Designer with 2 years of experience creating digital products across web, mobile, ERP, and B2B SaaS platforms. What I enjoy most about design is taking complex problems and turning them into experiences that feel simple and intuitive for users.
               </p>
               <p>
-                My approach combines deep user research with strategic thinking
-                to solve complex problems. I believe great design is invisible
-                — it just works, making people's lives easier and more
-                enjoyable.
+               Over the years, I've worked closely with stakeholders and developers, handling everything from understanding requirements and user flows to wireframes, prototypes, and final UI designs. I enjoy thinking beyond screens and understanding how products work from both the user and business perspective.
               </p>
               <p>
-                When I'm not designing, you'll find me exploring coffee shops,
-                practicing photography, or mentoring aspiring designers.
+             Outside of design, I'm passionate about technology and constantly exploring AI, backend development, and new product ideas. I'm always looking for opportunities to learn, improve, and build products that make a real impact.
               </p>
             </div>
 
@@ -65,7 +78,7 @@ const About = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="px-4 py-2 bg-background rounded-full text-sm text-muted-foreground border border-border hover:border-accent hover:text-accent transition-colors cursor-default"
+                    className="px-4 py-2 bg-background rounded-full text-xs text-muted-foreground border border-border hover:border-accent hover:text-accent transition-colors cursor-default"
                   >
                     {skill}
                   </motion.span>
@@ -83,7 +96,7 @@ const About = () => {
           >
             <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-elevated">
               <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=750&fit=crop"
+                src= {Kaustubh_profile}
                 alt="Kaustubh Raut - UX Designer"
                 className="w-full h-full object-cover"
               />

@@ -11,10 +11,17 @@ export interface ProjectData {
   team: string;
   overview: string;
   challenge: string;
+  problemStatement?: string;
+  personas?: {
+    title: string;
+    description: string;
+    needs: string[];
+  }[];
   process: {
     title: string;
     description: string;
     image: string;
+    deliverable?: string;
   }[];
   outcomes: {
     metric: string;
@@ -24,248 +31,722 @@ export interface ProjectData {
     quote: string;
     author: string;
     role: string;
-  };
+  } | null;
+  figmaLink?: string;
+  targetUsers?: {
+    type: string;
+    description: string;
+  }[];
+  keyDesignDecisions?: {
+    decision: string;
+    rationale: string;
+  }[];
+  competitiveAnalysis?: {
+    name: string;
+    rating: string;
+    strengths: string;
+    weaknesses: string;
+  }[];
+  researchInsights?: string[];
+  screens?: {
+    section: string;
+    description: string;
+    images: string[];
+  }[];
+  colorPalette?: {
+    name: string;
+    hex: string;
+  }[];
+  behanceUrl?: string;
 }
-
+import MetroThumbnail from "../assets/Metero_thumbnail.png"
+import SkillpilotsThumbnail from "../assets/Skillpilots_thumbnail.png"
+import SapphireThumbnail from "../assets/Sapphire_mobile_cover.png"
 export const projects: ProjectData[] = [
-  {
-    slug: "spotify-playlist-discovery",
-    title: "Spotify Playlist Discovery",
-    category: "Mobile App Design",
-    description:
-      "Reimagining how users discover and curate playlists through AI-powered recommendations and social features.",
-    image:
-      "https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=800&h=600&fit=crop",
-    hero: "https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=1600&h=900&fit=crop",
-    year: "2025",
-    role: "Lead UX Designer",
-    duration: "4 months",
-    team: "3 Designers, 5 Engineers, 1 PM",
-    overview:
-      "Spotify's playlist discovery was fragmented across multiple touchpoints, making it difficult for users to find music that truly resonated with their taste. I led the redesign of the playlist discovery experience, introducing AI-powered recommendations and social listening features that transformed how 50M+ users find new music.",
-    challenge:
-      "Users were spending an average of 12 minutes searching for new playlists, with a 40% abandonment rate. The existing recommendation engine surfaced generic results that didn't account for context—time of day, activity, or social listening habits. We needed to create a discovery experience that felt personal, effortless, and socially connected.",
-    process: [
-      {
-        title: "Research & Discovery",
-        description:
-          "Conducted 40+ user interviews across 6 markets, analyzed listening patterns of 100K users, and ran diary studies to understand contextual music discovery behaviors. Key insight: 73% of users discover their favorite playlists through friends, not algorithms.",
-        image:
-          "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Ideation & Prototyping",
-        description:
-          "Ran 3 design sprints exploring social-first discovery, context-aware recommendations, and collaborative playlist creation. Created 15 low-fi concepts, refined to 4 high-fidelity prototypes tested with 200 participants.",
-        image:
-          "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Visual Design & System",
-        description:
-          "Developed a new visual language for the discovery experience that balanced playfulness with clarity. Created reusable components integrated into Spotify's design system, ensuring consistency across platforms.",
-        image:
-          "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Testing & Iteration",
-        description:
-          "Ran A/B tests with 5% of users over 6 weeks. Iterated on the recommendation algorithm feedback loop based on qualitative and quantitative data. Refined the social features based on privacy concerns surfaced during testing.",
-        image:
-          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-      },
-    ],
-    outcomes: [
-      { metric: "Discovery time reduced", value: "67%" },
-      { metric: "Playlist saves increased", value: "3.2×" },
-      { metric: "User satisfaction (CSAT)", value: "92%" },
-      { metric: "Monthly active users impacted", value: "50M+" },
-    ],
-    testimonial: {
-      quote:
-        "Sarah's ability to translate complex user behaviors into elegant design solutions is remarkable. The playlist discovery redesign exceeded every metric we set.",
-      author: "Marcus Rivera",
-      role: "VP of Product, Spotify",
+{
+  slug: "matero-customer-app",
+  title: "Matero Customer App",
+  category: "Mobile App Design",
+  description:
+    "Designing the end-to-end ordering experience for contractors, " +
+    "builders, and homeowners to browse, order, and track construction " +
+    "material deliveries — directly to their site, from their phone.",
+  image: MetroThumbnail,
+  hero: MetroThumbnail,
+  year: "2026",
+  role: "UI/UX Designer",
+  duration: "20 days (8 April – 28 April 2026)",
+  team: "1 Designer (me), 2 Full Stack Developers, 1 Project Lead",
+
+  overview:
+    "Matero is a multi-city quick-commerce platform for construction " +
+    "materials — cement, sand, steel, bricks, tiles, and more — delivered " +
+    "from dark stores (called Materos) directly to construction sites. " +
+    "Before this platform existed, contractors had to visit multiple " +
+    "suppliers, negotiate prices manually, and arrange their own transport. " +
+    "I designed the complete Customer App (Android + iOS) — covering " +
+    "product browsing, cart with automatic weight-based vehicle assignment, " +
+    "checkout with full charge transparency, real-time order tracking, " +
+    "OTP-based delivery confirmation, and invoice download.",
+
+  challenge:
+    "The core problem was not just 'ordering materials online.' " +
+    "Construction procurement is B2B-heavy, weight-sensitive, and " +
+    "trust-dependent. A contractor ordering 1,300 KG of cement and sand " +
+    "needs to know: which vehicle will carry this? What will it cost? " +
+    "Will it actually reach the site? The existing process had no " +
+    "digital layer — it ran entirely on phone calls, manual negotiation, " +
+    "and informal transport arrangements. The design challenge was to " +
+    "make a complex, logistics-heavy ordering flow feel as simple and " +
+    "trustworthy as consumer e-commerce.",
+
+  targetUsers: [
+    {
+      type: "Contractors & Engineers",
+      description:
+        "Managing active construction projects. Need bulk orders, " +
+        "GST invoices, and reliable delivery ETAs.",
     },
-  },
-  {
-    slug: "fintech-dashboard-redesign",
-    title: "Fintech Dashboard Redesign",
-    category: "Web Application",
-    description:
-      "A comprehensive redesign of a financial analytics platform, improving data visualization and user workflow.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
-    hero: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop",
-    year: "2024",
-    role: "Senior UX Designer",
-    duration: "6 months",
-    team: "2 Designers, 8 Engineers, 2 PMs",
-    overview:
-      "A B2B fintech platform serving 10,000+ financial advisors needed a complete dashboard overhaul. The existing interface was data-dense but lacked actionable insights. I redesigned the entire analytics experience, creating a modular dashboard that adapts to each advisor's workflow.",
-    challenge:
-      "Financial advisors were using 4-5 different tools alongside the platform because the dashboard couldn't surface the right data at the right time. Task completion times averaged 23 minutes for common workflows. We needed to consolidate tools while maintaining the depth of data that professionals require.",
-    process: [
-      {
-        title: "Stakeholder Alignment",
-        description:
-          "Facilitated workshops with 15 stakeholders across product, engineering, and compliance. Mapped the entire advisor journey across a typical workday to identify critical moments and pain points.",
-        image:
-          "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Information Architecture",
-        description:
-          "Conducted card sorting with 30 advisors to restructure the data hierarchy. Created a modular widget system that allows advisors to customize their dashboard based on their specialization and client base.",
-        image:
-          "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Data Visualization Design",
-        description:
-          "Partnered with data scientists to design visualization components that make complex financial data accessible. Developed an alert system that proactively surfaces actionable insights.",
-        image:
-          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Iterative Refinement",
-        description:
-          "Ran 4 rounds of usability testing with practicing advisors. Each round focused on specific workflow scenarios, from portfolio review to client reporting. Achieved a 95% task success rate by the final round.",
-        image:
-          "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=800&h=500&fit=crop",
-      },
-    ],
-    outcomes: [
-      { metric: "Task completion time", value: "-58%" },
-      { metric: "Tools consolidated", value: "4→1" },
-      { metric: "User retention", value: "+34%" },
-      { metric: "NPS score improvement", value: "+41pts" },
-    ],
-    testimonial: {
-      quote:
-        "The redesigned dashboard has become our biggest competitive advantage. Advisors tell us it's the reason they switched from legacy platforms.",
-      author: "Elena Park",
-      role: "CPO, FinanceFlow",
+    {
+      type: "Real Estate Builders",
+      description:
+        "Running multiple sites across a city. Need multi-address " +
+        "management and project-linked invoicing.",
     },
-  },
-  {
-    slug: "healthcare-booking-system",
-    title: "Healthcare Booking System",
-    category: "End-to-End UX",
-    description:
-      "Streamlining the patient experience with an intuitive appointment scheduling and telehealth platform.",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-    hero: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop",
-    year: "2024",
-    role: "UX Lead",
-    duration: "5 months",
-    team: "2 Designers, 6 Engineers, 1 PM, 1 Clinical Advisor",
-    overview:
-      "A regional healthcare network with 200+ providers needed a unified booking and telehealth platform. I led the UX from research through launch, designing a system that reduced no-show rates by 35% and made healthcare access more equitable for underserved communities.",
-    challenge:
-      "Patients faced a fragmented booking experience—phone calls, multiple portals, and no visibility into availability. No-show rates were at 28%, costing the network $2M annually. The platform also needed to serve patients with varying levels of digital literacy and language needs.",
-    process: [
-      {
-        title: "Community Research",
-        description:
-          "Partnered with community health workers to conduct contextual interviews with 60 patients across diverse demographics. Mapped accessibility barriers including language, digital literacy, and device constraints.",
-        image:
-          "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Inclusive Design",
-        description:
-          "Designed the booking flow to work seamlessly across devices with WCAG AAA compliance. Implemented smart defaults based on patient history, reducing booking steps from 8 to 3. Added multilingual support for 5 languages.",
-        image:
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Telehealth Integration",
-        description:
-          "Designed a frictionless telehealth experience that required zero downloads or account creation. Created a waiting room experience that reduced perceived wait times through educational content and pre-visit preparation.",
-        image:
-          "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Pilot & Scale",
-        description:
-          "Launched with 3 pilot clinics, gathering feedback from 500+ patients over 8 weeks. Iterated on reminder systems and rebooking flows before scaling to all 200+ providers across the network.",
-        image:
-          "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&h=500&fit=crop",
-      },
-    ],
-    outcomes: [
-      { metric: "No-show rate reduced", value: "35%" },
-      { metric: "Booking completion rate", value: "94%" },
-      { metric: "Patient satisfaction", value: "4.8/5" },
-      { metric: "Annual cost savings", value: "$700K" },
-    ],
-    testimonial: {
-      quote:
-        "Sarah didn't just design a booking system—she designed a more equitable way for our community to access healthcare. The impact has been profound.",
-      author: "Dr. Amara Osei",
-      role: "Chief Medical Officer, CareFirst Network",
+    {
+      type: "Individual Homeowners",
+      description:
+        "Building or renovating. Need a simple experience " +
+        "without GST complexity.",
     },
-  },
-  {
-    slug: "ecommerce-mobile-experience",
-    title: "E-commerce Mobile Experience",
-    category: "UX Research & Design",
-    description:
-      "Creating a seamless shopping journey with personalized recommendations and frictionless checkout.",
-    image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-    hero: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&h=900&fit=crop",
-    year: "2023",
-    role: "Senior UX Designer",
-    duration: "3 months",
-    team: "2 Designers, 4 Engineers, 1 PM",
-    overview:
-      "A DTC fashion brand with $50M in annual revenue was losing 68% of mobile users at checkout. I redesigned the entire mobile shopping experience, from product discovery to post-purchase, resulting in a 45% increase in mobile conversion rates.",
-    challenge:
-      "Mobile accounted for 70% of traffic but only 30% of revenue. The existing mobile experience was a responsive afterthought—slow, cluttered, and with a checkout flow that required 14 taps to complete. We needed a mobile-first experience that matched the brand's premium positioning.",
-    process: [
-      {
-        title: "Analytics Deep Dive",
-        description:
-          "Analyzed 6 months of session recordings, heatmaps, and funnel data. Identified 7 critical drop-off points in the mobile journey. Conducted competitive analysis of 12 leading DTC brands to benchmark best practices.",
-        image:
-          "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Mobile-First Redesign",
-        description:
-          "Designed a gesture-driven browsing experience with swipeable product galleries and contextual filters. Reduced checkout to 4 taps with saved preferences, Apple Pay integration, and smart address completion.",
-        image:
-          "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Personalization Engine",
-        description:
-          "Collaborated with ML engineers to design the recommendation UI—recently viewed, style matches, and 'complete the look' modules. Designed onboarding that captured style preferences without friction.",
-        image:
-          "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&h=500&fit=crop",
-      },
-      {
-        title: "Performance Optimization",
-        description:
-          "Worked with engineering to optimize image loading, implement skeleton screens, and reduce time-to-interactive. The redesigned experience loads in under 2 seconds on 3G connections.",
-        image:
-          "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-      },
-    ],
-    outcomes: [
-      { metric: "Mobile conversion rate", value: "+45%" },
-      { metric: "Checkout completion", value: "+62%" },
-      { metric: "Average order value", value: "+18%" },
-      { metric: "Page load time", value: "<2s" },
-    ],
-    testimonial: {
-      quote:
-        "Our mobile experience went from our biggest weakness to our strongest channel. Sarah's research-driven approach gave us confidence in every design decision.",
-      author: "Jordan Lee",
-      role: "Head of Digital, MAISON",
+  ],
+
+  process: [
+    {
+      title: "Understanding the ordering problem",
+      description:
+        "The product spec defined 15 objectives and a 29-step order " +
+        "journey — from city selection to invoice download. My first task " +
+        "was mapping this against what a real customer actually needs to " +
+        "see and do at each step. The key complexity: the system " +
+        "auto-calculates vehicle assignment based on total order weight " +
+        "(e.g. 10 bags cement × 50 KG = 500 KG, system assigns smallest " +
+        "eligible vehicle). This logic had to be visible to the customer " +
+        "in real time — not hidden in the backend. " +
+        "← Add: what specific user flow decisions you made here. " +
+        "What did you simplify or restructure from the spec?",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop",
     },
-  },
-];
+    {
+      title: "Cart & weight calculation — the hardest UX problem",
+      description:
+        "The cart is not a standard e-commerce cart. As the customer " +
+        "adds products, the system recalculates total order weight " +
+        "instantly and reassigns the vehicle category. This meant the " +
+        "cart screen had to show: total weight, assigned vehicle type, " +
+        "and delivery charge — all updating live. Too much information " +
+        "causes anxiety; too little causes distrust at checkout. " +
+        "← Add: how you designed this. What layout did you choose? " +
+        "How did you show weight and vehicle info without overwhelming " +
+        "the user? Did you test any variations?",
+      image:
+        "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Checkout — 6-part charge breakdown",
+      description:
+        "The checkout shows: Base Fare + Extra Distance Charge + " +
+        "Zone Surcharge + Unloading Charge (optional) + Platform Fee + " +
+        "GST (optional). Six line items before the Grand Total. " +
+        "The design had to make this transparent without feeling " +
+        "intimidating. Additionally, customers could toggle GST on/off " +
+        "per order, and select from 4 address categories " +
+        "(Residential / Commercial / Construction Site / Government) " +
+        "which changes the invoice format. " +
+        "← Add: how you structured the checkout screen. " +
+        "How did you handle the GST toggle UX? " +
+        "What did you prioritise above the fold?",
+      image:
+        "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Order tracking & OTP delivery confirmation",
+      description:
+        "The tracking screen shows a 6-stage status bar " +
+        "(Order Placed → Matero Assigned → Packed → Driver Assigned → " +
+        "Out for Delivery → Delivered), a live map with driver location " +
+        "updating every 30 seconds, driver details, masked contact, " +
+        "and — critically — the 6-digit OTP the customer must share " +
+        "verbally with the driver to confirm delivery. " +
+        "The OTP is the delivery confirmation mechanism. " +
+        "If the customer loses it, they can regenerate once. " +
+        "← Add: how you designed this screen. " +
+        "How prominent is the OTP? What happens visually when " +
+        "the driver is near? Did you consider edge cases like " +
+        "'customer not available'?",
+      image:
+        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
+    },
+  ],
+
+  keyDesignDecisions: [
+    {
+      decision: "Live weight + vehicle display in cart",
+      rationale:
+        "Weight-based vehicle assignment is invisible system logic. " +
+        "Making it visible builds trust and reduces checkout abandonment.",
+    },
+    {
+      decision: "OTP as the delivery close mechanism",
+      rationale:
+        "Puts delivery confirmation control in the customer's hands. " +
+        "Driver cannot fake a completed delivery without the real OTP.",
+    },
+    {
+      decision: "Address category selection",
+      rationale:
+        "4 address types (Residential / Commercial / Site / Government) " +
+        "auto-switch the invoice format. One decision at address entry " +
+        "eliminates all invoice disputes later.",
+    },
+    {
+      decision: "GST toggle — per order and permanent",
+      rationale:
+        "B2C homeowners don't need GST. B2B contractors need it on " +
+        "every order. One toggle at checkout, one permanent setting " +
+        "in profile — serves both without forcing either.",
+    },
+  ],
+
+  outcomes: [
+    {
+      metric: "All screens designed & handed off",
+      value: "20 days",
+    },
+    {
+      metric: "Key flows covered",
+      value: "Registration, Browse, Cart, Checkout, Tracking, Invoice",
+    },
+    {
+      metric: "← Testing / validation result",
+      value: "← Add honest outcome",
+    },
+  ],
+  figmaLink: "https://www.figma.com/proto/pSGIDqr8ar5wsmKuLL6zQs/METERO?node-id=309-702&p=f&viewport=372%2C226%2C0.04&t=JzyOKT614dAblFaW-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=309%3A702&show-proto-sidebar=1&page-id=0%3A1",
+
+  testimonial: null,
+ },
+ {
+  slug: "skillpilots",
+  title: "SkillPilots",
+  category: "Web Application",
+  description:
+    "A multi-stakeholder career readiness and talent intelligence platform connecting students, institutions, and corporates through structured assessments, intelligent career guidance, and automated hiring workflows.",
+  image: SkillpilotsThumbnail,
+  hero: SkillpilotsThumbnail,
+  year: "2024",
+  role: "UI/UX Designer",
+  duration: "Ongoing",
+  team: "Cross-functional (Design, Engineering, Product)",
+
+  overview:
+  "SkillPilots is a shipped B2B/B2C platform available on the Google Play Store with 150+ downloads. It closes the structural gap between student skill development, institutional placement tracking, and corporate hiring accuracy — serving three distinct user types from a shared assessment and profile infrastructure.",
+  problemStatement:
+    "India's talent ecosystem has a critical mismatch: students apply with unverified resumes, colleges track placements through spreadsheets, and companies hire from profiles with no signal beyond self-declaration. No single platform addressed all three stakeholders with shared, verified readiness data. Internship certificates were issued manually — typed, printed, physically signed, and scanned — taking days per intern with no consistency.",
+
+  challenge:
+    "Designing one platform for three radically different mental models was the central challenge. Students needed confidence-building, progressive journeys. TPOs needed governance structures, hierarchy management, and accreditation-ready reports. HR teams needed high-signal shortlisting with minimal friction. Every shared component — assessments, profiles, certificates — had to serve all three without compromising any one persona's experience.",
+
+  personas: [
+    {
+      title: "Student",
+      description: "Final-year or pre-final-year student seeking internships or jobs. Lacks confidence in self-assessment.",
+      needs: [
+        "Know if they're ready to apply",
+        "Structured preparation with milestones",
+        "Verifiable proof of skills",
+        "Safe space to practice interviews"
+      ]
+    },
+    {
+      title: "TPO / Campus Coordinator",
+      description: "Training and placement officer managing 100s of students across departments.",
+      needs: [
+        "Department-wise readiness visibility",
+        "Managed internship and placement drives",
+        "NAAC, NBA, NEP 2020 aligned reports",
+        "Internship completion tracking"
+      ]
+    },
+    {
+      title: "Corporate HR",
+      description: "HR manager running internship programs or lateral hiring. Time-pressured, needs signal over noise.",
+      needs: [
+        "Pre-evaluated candidate pools",
+        "Fast, fair shortlisting tools",
+        "Automated certificate issuance",
+        "Intern-to-hire conversion data"
+      ]
+    }
+  ],
+
+  process: [
+    {
+      title: "Multi-persona journey mapping",
+      description:
+        "Mapped three end-to-end journeys — candidate, TPO, and corporate HR — and identified where they intersect: assessment data, candidate profiles, internship listings, and certificate issuance. These intersection points became the shared design system components.",
+      deliverable: "Journey map per persona + intersection matrix",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Information architecture for role-based access",
+      description:
+        "Designed a three-tier hierarchy for institutions (TPO → Department Coordinator → HOD) and a parallel structure for corporates (HR → Manager → Hiring Team). Mapped which data each role could view, edit, or approve. Defined shared entities that rendered differently per role.",
+      deliverable: "AI map + role-permission matrix",
+      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Assessment framework UX design",
+      description:
+        "Designed the four-layer evaluation system — psychometric (quarterly), foundational (unlimited attempts, 30 marks each), and technical at three levels (Basic / Intermediate / Advanced with 10 / 5 / 3 attempts respectively). Each layer required distinct interaction patterns: psychometric is situational, technical is progressive, foundational is remedial-friendly.",
+      deliverable: "Assessment flow per layer + attempt logic specs",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Career roadmap system — the 7-7-7 framework",
+      description:
+        "Designed the 21-day sprint system where post-assessment score determines roadmap level. Each sprint has 3–4 daily micro-tasks paired with videos and 10-question quizzes requiring 50% to unlock the next day. Sprint completion triggers a domain-aware project submission: GitHub for tech, Figma for design, Drive for non-tech, AutoCAD for engineering.",
+      deliverable: "Daily task flow + domain-type submission screens",
+      image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Platform integrity features",
+      description:
+        "Designed four layered integrity flows: profile picture gate with server-side face detection; live webcam face-match at session start (75% confidence threshold, 3-attempt limit before flagging); annual qualification update modal in June (non-dismissable, blocks all platform routes until submitted); and pursuit qualification rules preventing multiple concurrent active qualifications.",
+      deliverable: "Verification flow specs + edge case handling table",
+      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Automated certificate flow",
+      description:
+        "Replaced a fully manual process (individual creation, printing, signing, scanning per intern) with a one-time company setup. Designed the letterhead/signature upload panel, the completion-trigger logic, the auto-generated PDF with student data and performance feedback, and the blocked state UX for when company assets are missing.",
+      deliverable: "Certificate setup flow + generation state screens + API spec reference",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
+    }
+  ],
+
+  keyDesignDecisions: [
+    {
+      decision: "Progressive retry logic per assessment layer",
+      rationale: "10 attempts at Basic, 5 at Intermediate, 3 at Advanced — decreasing attempts signal increasing stakes without making early-stage learners feel locked out."
+    },
+    {
+      decision: "Non-dismissable blocking modal for annual qualification update",
+      rationale: "Stale academic year data caused internship mismatches. A soft nudge would be ignored. The modal blocks all routes until submission, but only triggers once per year in June — high stakes, low frequency."
+    },
+    {
+      decision: "Domain-aware project submission fields",
+      rationale: "A GitHub link is meaningless for a Civil Engineering student. Project submission UI adapts to domain_type stored in the user profile — tech gets GitHub, design gets Figma, agriculture optionally captures GPS coordinates."
+    },
+    {
+      decision: "Readiness levels shown instead of raw scores to employers",
+      rationale: "Raw scores invite gaming and misinterpretation. Employers see High / Moderate / Emerging alignment indicators, which are harder to inflate and easier to act on."
+    }
+  ],
+
+  outcomes: [
+    { metric: "Live on Google Play Store & App store", value: "Shipped" },
+    { metric: "Downloads", value: "150+" },
+    { metric: "User personas served", value: "3" },
+    { metric: "Assessment layers designed", value: "4" },
+    { metric: "Manual steps post-setup for certificates", value: "0" },
+    { metric: "Accreditation frameworks supported", value: "NAAC, NBA, NEP 2020" },
+  ],
+  // No testimonial — the documentation contains no verifiable user quotes
+},
+{
+  slug: "sapphire-broking",
+  title: "Sapphire Broking",
+  category: "Mobile Application",
+  description:
+    "A seamless and engaging stock trading experience redesign for Sapphire Broking — simplifying complex financial workflows for first-time and experienced traders alike.",
+  image: SapphireThumbnail,
+  hero: SapphireThumbnail,
+  year: "2025",
+  role: "UI/UX Designer",
+  duration: "6 weeks (May – June 2025)",
+  team: "1 Designer (me), 1 Product Manager, 3 Frontend Developers, 2 Backend Developers",
+
+  overview:
+    "Sapphire Broking is a stock trading platform redesign focused on making equity trading accessible, fast, and trustworthy for Indian retail investors. The project involved end-to-end UX design — from competitive research and user interviews through information architecture, wireframes, and high-fidelity screens across Watchlist, Trades, Orders, Holdings, and Account flows.",
+
+  problemStatement:
+    "Stock trading apps in India are either too complex for beginners or too stripped-down for active traders. First-time investors feel overwhelmed by jargon-heavy interfaces, while experienced traders lose time navigating poorly structured workflows. Sapphire Broking needed a ground-up UX redesign that served both segments without compromise.",
+
+  challenge:
+    "Designing a financial product that reduces cognitive load without sacrificing depth. Trading involves real money and real-time data — errors in UX design directly translate to financial loss for users. Every interaction had to be fast, clear, and confidence-inspiring, especially for order placement and portfolio tracking.",
+
+  competitiveAnalysis: [
+    {
+      name: "Zerodha",
+      rating: "4.5/5",
+      strengths: "Extremely reliable execution, powerful charts (TradingView/ChartIQ Integration), clean order book.",
+      weaknesses: "High cognitive load for beginners, separate apps for mutual funds (Coin) and trading (Kite).",
+    },
+    {
+      name: "Groww",
+      rating: "4.2/5",
+      strengths: "Very simple onboarding, unified dashboard for stocks and mutual funds, friendly for beginners.",
+      weaknesses: "Lacks advanced charting tools, slower order execution during peak hours, limited F&O features.",
+    },
+    {
+      name: "Angel One",
+      rating: "4.0/5",
+      strengths: "Strong advisory features, comprehensive research reports, good offline sub-broker network support.",
+      weaknesses: "Cluttered UI with too many promotional banners, confusing navigation for novice users.",
+    },
+    {
+      name: "Upstox",
+      rating: "4.1/5",
+      strengths: "Robust API integrations, strong option chain analysis tools, fast watchlist filters.",
+      weaknesses: "Frequent UI updates disrupt muscle memory, customer support response times can be high.",
+    },
+  ],
+
+  personas: [
+    {
+      title: "The First-Time Investor",
+      description:
+        "22–28 years old, salaried professional, just opened a demat account. Intimidated by charts and order types. Wants simplicity and guidance.",
+      needs: [
+        "Simple onboarding with no jargon",
+        "Clear buy/sell flow with confirmation",
+        "Portfolio summary at a glance",
+        "Educational nudges at key moments",
+      ],
+    },
+    {
+      title: "The Active Trader",
+      description:
+        "30–45 years old, experienced with equity and F&O. Trades daily. Values speed, data density, and keyboard/gesture shortcuts.",
+      needs: [
+        "Fast order placement with minimal taps",
+        "Real-time watchlist with price alerts",
+        "Detailed holdings and P&L breakdown",
+        "Quick access to trade history",
+      ],
+    },
+  ],
+
+  researchInsights: [
+    "Users abandoned order flows when confirmation screens were unclear about quantity and price.",
+    "Watchlist management was cited as the most-used and most-frustrating feature across competing apps.",
+    "First-time investors specifically wanted a 'total invested vs current value' summary visible without navigation.",
+    "Active traders wanted one-tap access to the order book from any screen.",
+  ],
+
+  process: [
+    {
+      title: "Competitive analysis",
+      description:
+        "Audited four major Indian broking apps — Zerodha, Groww, Angel One, and Upstox — across onboarding, watchlist management, order placement, holdings view, and account management. Mapped strengths and gaps to identify design opportunities for Sapphire.",
+      deliverable: "Competitor audit matrix with ratings and feature comparison",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
+    },
+    {
+      title: "User research & personas",
+      description:
+        "Conducted user interviews with first-time investors and active traders. Synthesized findings into two primary personas representing the spectrum of Sapphire's target users. Identified core pain points around order complexity, portfolio clarity, and watchlist friction.",
+      deliverable: "2 user personas + pain point map",
+      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Information architecture",
+      description:
+        "Restructured the app's navigation around five primary sections: Watchlist, Trades, Orders, Holdings, and Account. Designed a bottom navigation model with quick-access order placement accessible from every tab. Mapped full user flows for the critical paths: stock search → add to watchlist, watchlist → place order, and portfolio → individual stock detail.",
+      deliverable: "IA diagram + user flow maps",
+      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Wireframes",
+      description:
+        "Created low-fidelity wireframes for all primary screens before moving to high fidelity. Tested wireframe flows with users to validate navigation structure and order placement clarity before investing in visual design.",
+      deliverable: "Low-fidelity wireframes across all 5 sections",
+      image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=500&fit=crop",
+    },
+    {
+      title: "Visual design system",
+      description:
+        "Built a design system grounded in Sapphire's brand: primary green (#00B074), tech core, law core, tax core, and white core. Typography hierarchy established for data-dense screens where readability at small sizes is critical. High-contrast color choices for buy (green) and sell (red) states following Indian market conventions.",
+      deliverable: "Color palette, typography scale, component library",
+      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=500&fit=crop",
+    },
+    {
+      title: "High fidelity screens",
+      description:
+        "Designed complete high-fidelity screens across all sections: Watchlist (real-time price list, search, alerts), Trades (order history, filters), Order placement (buy/sell form, confirmation), Holdings (portfolio summary, individual stock detail), Account (profile, settings, linked banks), and additional utility screens.",
+      deliverable: "50+ high-fidelity screens across 5 core sections",
+      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=500&fit=crop",
+    },
+  ],
+
+  screens: [
+    {
+      section: "Watchlist",
+      description:
+        "Real-time stock price list with search, sorting, and quick-add. Designed for fast scanning with clear price change indicators.",
+      images: [
+        "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1624996379697-f01d168b1a52?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=1200&fit=crop",
+      ],
+    },
+    {
+      section: "Trades",
+      description:
+        "Complete trade history with filters by date, segment, and status. Designed for active traders who review their activity daily.",
+      images: [
+        "https://images.unsplash.com/photo-1642390061910-0f71228000ab?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1642390061803-ec5ec28b49ec?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=1200&fit=crop",
+      ],
+    },
+    {
+      section: "Order",
+      description:
+        "Buy and sell order placement with clear quantity, price, and order type inputs. Confirmation screen shows exact cost breakdown before execution.",
+      images: [
+        "https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1618042164219-62c820f10723?w=800&h=1200&fit=crop",
+      ],
+    },
+    {
+      section: "Holdings",
+      description:
+        "Portfolio overview showing total invested, current value, and day P&L at the top. Individual stock cards show quantity, average price, and return percentage.",
+      images: [
+        "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=1200&fit=crop",
+      ],
+    },
+    {
+      section: "Account",
+      description:
+        "Profile, linked bank accounts, segment activation, and settings. Designed to be rarely visited but easy to navigate when needed.",
+      images: [
+        "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=1200&fit=crop",
+      ],
+    },
+  ],
+
+  keyDesignDecisions: [
+    {
+      decision: "Bottom navigation with persistent order button",
+      rationale:
+        "Order placement is the most critical action in a trading app. A floating action button accessible from every tab reduces the tap count from 3–4 to 1 for placing an order from any screen.",
+    },
+    {
+      decision: "Buy/sell color convention follows NSE standard (green/red)",
+      rationale:
+        "Indian traders are conditioned to NSE/BSE color standards. Deviating would introduce cognitive friction at the moment of financial decision-making — a risk not worth taking.",
+    },
+    {
+      decision: "Confirmation screen before every order execution",
+      rationale:
+        "User research showed order errors (wrong quantity, wrong price type) were a top complaint across competitor apps. A mandatory confirmation screen adds one tap but prevents irreversible mistakes.",
+    },
+    {
+      decision: "Portfolio summary pinned at top of Holdings tab",
+      rationale:
+        "First-time investors specifically asked for total invested vs current value visible without scrolling. Pinning this summary at the top answered the most common 'how am I doing?' question instantly.",
+    },
+  ],
+
+  colorPalette: [
+    { name: "Primary Core (Brand Green)", hex: "#00B074" },
+    { name: "Tech Core (Ocean Navy)", hex: "#0E1E38" },
+    { name: "Law Core (Slate Gray)", hex: "#64748B" },
+    { name: "Tax Core (Soft Mint)", hex: "#E8F7F2" },
+    { name: "White Core", hex: "#FFFFFF" },
+    { name: "Dark Text", hex: "#1E293B" },
+  ],
+
+  outcomes: [
+    { metric: "Screens designed", value: "50+" },
+    { metric: "Core user flows", value: "5" },
+    { metric: "Personas researched", value: "2" },
+    { metric: "Competitors audited", value: "4" },
+    { metric: "Published on Behance", value: "Live" },
+  ],
+
+  behanceUrl: "https://www.behance.net/gallery/224380145/Sapphire-Broking-UIUX-Case-Study",
+},
+{
+  slug: "events-go",
+  
+  title: "Events GO",
+  category: "Mobile Application Redesign",
+  description:
+    "A complete UI redesign of Events GO — an event management app for photographers and event companies — transforming a cluttered, outdated interface into a modern, dark-themed product built for real business workflows.",
+  image: "/images/eventsgo/thumbnail.png",
+  hero: "/images/eventsgo/hero.png",
+  year: "2025",
+  role: "UI/UX Designer",
+  duration: "placeholder",
+  team: "Solo Designer",
+
+  overview:
+    "Events GO is a mobile application built for event photography businesses and event management companies. It handles the full business workflow — from creating events and managing customers to tracking payments, logging expenses, managing staff exposings, and sharing photo galleries with clients. The existing app had a functional backend but a poor UI that felt unpolished and untrustworthy for a business-facing product. I redesigned the entire interface with a modern dark purple aesthetic, improved information hierarchy, and cleaner interaction patterns across every screen.",
+
+  problemStatement:
+    "The original Events GO interface was built to be functional, not professional. For a B2B tool used by photographers and event companies to manage real client relationships and real money, the UI communicated the wrong level of trust and quality. Business owners couldn't confidently show this app to clients or use it during live events without friction.",
+
+  challenge:
+    "Event management apps carry dual complexity: they serve the business operator (who needs dashboards, analytics, and financial tracking) and indirectly serve the client (who receives gallery access and payment information). Every screen had to feel premium enough for client-facing moments while staying efficient for operator-heavy workflows like creating events, logging expenses, and managing staff.",
+
+  researchInsights: [
+    "Event photographers manage 5–15 active events simultaneously — the dashboard needed to surface the most urgent information without scrolling.",
+    "Payment tracking was the most business-critical flow — operators needed to see package amount, advanced paid, and remaining due at a glance.",
+    "Photo gallery sharing with clients was a trust moment — the gallery screen needed to feel premium, not utilitarian.",
+    "Staff exposing lists (candid photographers, videographers) are referenced during live events on mobile — the list needed to be scannable under time pressure.",
+    "Analytics (income vs expenses vs profit) was a key decision-making screen for pricing packages — it needed clear visual hierarchy, not just raw numbers.",
+  ],
+
+  process: [
+    {
+      title: "Audit of existing UI",
+      description:
+        "Mapped all existing screens and flows to understand the full scope of the product before redesigning. Identified screens that were purely operator-facing (dashboard, analytics, expenses) vs client-facing (gallery, payment summary) — these required different visual treatments.",
+      deliverable: "Screen inventory + flow map + problem annotations",
+      image: "/images/eventsgo/process-audit.png",
+    },
+    {
+      title: "Visual direction — dark luxury aesthetic",
+      description:
+        "Chose a deep dark background (#0D0D0D) with violet/purple (#7C3AED range) as the primary brand color. This direction was deliberate: dark themes signal premium quality in photography and media tools (Adobe, Lightroom, Final Cut), aligning Events GO with the professional tools its users already trust. Purple differentiated it from the flat-white aesthetic of generic business apps.",
+      deliverable: "Color palette + typography scale + component decisions",
+      image: "/images/eventsgo/process-visual.png",
+    },
+    {
+      title: "Navigation architecture",
+      description:
+        "Designed a bottom navigation bar with four tabs — Home, Event, Analytics, My Profile — each with distinct active/inactive states using purple highlight and icon fill. The nav bar remains consistent across all primary screens to reduce disorientation during fast task-switching, which is common during live events.",
+      deliverable: "Nav bar component with 4 active states",
+      image: "/images/eventsgo/process-nav.png",
+    },
+    {
+      title: "Onboarding flow redesign",
+      description:
+        "Redesigned the three-step sign up flow: Personal Details → Company Details (with brand logo upload, services selection, address) → Set Password. Each step is a full screen with a single focused task and a persistent Continue CTA at the bottom. The login screen uses a minimal centered card layout with mobile number + password.",
+      deliverable: "Splash → Login → Sign up (3-step) → Dashboard flow",
+      image: "/images/eventsgo/process-onboarding.png",
+    },
+    {
+      title: "Dashboard and event management screens",
+      description:
+        "Redesigned the home dashboard with a personalized greeting, six quick-action tiles (New Events, Show Events, Exposings, Customers, Payments, Expenses), and a live events list showing upcoming event cards with date badges and tab filtering (All, Haldi, Wedding, Reception). Event creation form was restructured into three clear sections: Event Details, Customer Details, and Event Package — with a date/time picker and package selector.",
+      deliverable: "Dashboard, event list, create event, event detail screens",
+      image: "/images/eventsgo/process-dashboard.png",
+    },
+    {
+      title: "Financial tracking flows",
+      description:
+        "Designed the Payments screen showing due amount, package breakdown, and payment history. Add Payment screen pre-fills package information (Silver — ₹35,000 final, ₹10,000 advanced, ₹25,000 remaining) and only asks for payment date and amount. Expenses screen separates Vendor and Employee expense types with clear tagging, contact numbers, and running totals. Analytics report shows income vs expenses vs total profit with a transaction timeline.",
+      deliverable: "Payments, Add Payment, Expenses, Add Expense, Analytics screens",
+      image: "/images/eventsgo/process-financial.png",
+    },
+    {
+      title: "Gallery and client-facing screens",
+      description:
+        "Designed the event photo gallery with a cover image, photo/video count, and masonry grid. Added QR code sharing — clients can scan to access the gallery directly without needing the app. The exposing list screen shows staff by event tab (Haldi, Wedding, Reception) with name, mobile, role (Candid/Videographer), and price per person — designed to be read quickly during on-ground coordination.",
+      deliverable: "Gallery, QR share, Exposing list, My Packages screens",
+      image: "/images/eventsgo/process-gallery.png",
+    },
+  ],
+
+  screens: [
+    {
+      section: "Onboarding",
+      description:
+        "Splash screen, Login, and 3-step Sign Up (Personal Details, Company Details, Set Password). Clean centered layout with full-bleed dark background and purple CTA buttons.",
+      images: [
+        "/images/eventsgo/screens/splash.png",
+        "/images/eventsgo/screens/login.png",
+        "/images/eventsgo/screens/signup-personal.png",
+        "/images/eventsgo/screens/signup-company.png",
+        "/images/eventsgo/screens/signup-password.png",
+      ],
+    },
+    {
+      section: "Dashboard",
+      description:
+        "Personalized greeting with 6 quick-action tiles and a live events list with upcoming event cards, date badges, and tab filters.",
+      images: [
+        "/images/eventsgo/screens/dashboard.png",
+        "/images/eventsgo/screens/event-list.png",
+      ],
+    },
+    {
+      section: "Event Management",
+      description:
+        "Create event form (3 sections: Event Details, Customer Details, Event Package), event detail view with sub-event tabs (Haldi, Wedding, Reception), and date range picker.",
+      images: [
+        "/images/eventsgo/screens/create-event.png",
+        "/images/eventsgo/screens/event-detail.png",
+        "/images/eventsgo/screens/date-picker.png",
+      ],
+    },
+    {
+      section: "Payments & Expenses",
+      description:
+        "Payment due summary with package breakdown, Add Payment form, Expenses list with Vendor/Employee tags, and Add Expense forms for both types.",
+      images: [
+        "/images/eventsgo/screens/payments.png",
+        "/images/eventsgo/screens/add-payment.png",
+        "/images/eventsgo/screens/expenses.png",
+        "/images/eventsgo/screens/add-expense-vendor.png",
+        "/images/eventsgo/screens/add-expense-employee.png",
+      ],
+    },
+    {
+      section: "Analytics",
+      description:
+        "Business analytics report showing Income, Expenses, and Total Profit with a transaction-level breakdown and date range filter.",
+      images: [
+        "/images/eventsgo/screens/analytics.png",
+      ],
+    },
+    {
+      section: "Gallery & Exposings",
+      description:
+        "Event photo gallery with cover image, photo/video count, masonry grid, and QR code sharing. Exposing staff list organized by event tab with role and pricing.",
+      images: [
+        "/images/eventsgo/screens/gallery.png",
+        "/images/eventsgo/screens/gallery-qr.png",
+        "/images/eventsgo/screens/exposings.png",
+      ],
+    },
+    {
+      section: "Packages & Customers",
+      description:
+        "My Packages screen with Silver (₹12,000), Gold (₹35,000), and Corporate Shoot (₹25,000) tiers. Customer list with contact details and anniversary tracking.",
+      images: [
+        "/images/eventsgo/screens/packages.png",
+        "/images/eventsgo/screens/customers.png",
+      ],
+    },
+  ],
+
+  outcomes: [
+    { metric: "Screens redesigned", value: "20+" },
+    { metric: "Core workflows covered", value: "7" },
+    { metric: "Visual direction", value: "Dark luxury" },
+    { metric: "Financial flows designed", value: "Payments, Expenses, Analytics" },
+  ],
+}
+]
