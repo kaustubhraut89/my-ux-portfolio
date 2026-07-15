@@ -62,7 +62,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-accent font-medium text-sm tracking-widest uppercase mb-6"
             >
-              UX Designer & Strategist
+              UX Designer & Product Designer
             </motion.p>
 
             <motion.h1
@@ -82,7 +82,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-muted-foreground text-lg md:text-xl max-w-xl leading-relaxed mb-12"
             >
-              UI/UX Designer with 1.8+ years of experience crafting user-centered experiences for web, mobile, ERP, and B2B SaaS products. Passionate about simplifying complex workflows through research, design, and product thinking. Combining design expertise with technical knowledge of backend systems and AI technologies to create impactful digital solutions.
+              UI/UX Designer with 2 years of experience crafting user-centered experiences for web, mobile, ERP, and B2B SaaS products. Passionate about simplifying complex workflows through research, design, and product thinking. Combining design expertise with technical knowledge of backend systems and AI technologies to create impactful digital solutions.
             </motion.p>
 
             <motion.div

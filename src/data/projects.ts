@@ -20,7 +20,7 @@ export interface ProjectData {
   process: {
     title: string;
     description: string;
-    image: string;
+    image?: string;
     deliverable?: string;
   }[];
   outcomes: {
@@ -58,10 +58,40 @@ export interface ProjectData {
     hex: string;
   }[];
   behanceUrl?: string;
+  appStoreUrl?: string;
 }
 import MetroThumbnail from "../assets/Metero_thumbnail.png"
 import SkillpilotsThumbnail from "../assets/Skillpilots_thumbnail.png"
 import SapphireThumbnail from "../assets/Sapphire_mobile_cover.png"
+import EventGoThumbnail from "../assets/Cover_for_EG.png"
+import Watchlist1 from "../assets/watchlist1.png"
+import Watchlist2 from "../assets/Watchlist2.png"
+import Trade1 from "../assets/Trades1.png"
+import Trade2 from "../assets/Trades2.png"
+import Trade3 from "../assets/Trades3.png"
+import Order1 from "../assets/Order1.png"
+import Order2 from "../assets/Order2.png"
+import Order3 from "../assets/Order3.png"
+import Holding1 from "../assets/Holding1.png"
+import Holding2 from "../assets/Holding2.png"
+import Holding3 from "../assets/Holding3.png"
+import Acc1 from '../assets/Acc1.png'
+import Acc2 from '../assets/Acc2.png'
+import Acc3 from '../assets/Acc3.png'
+import Signup1 from "../assets/EG_signup1.png"
+import Signup2 from "../assets/EG_signup2.png"
+import Signup3 from "../assets/EG_signup3.png"
+import Dash1 from "../assets/EG_Dash.png"
+import Dash2 from "../assets/EG_Dash2.png"
+import EvntMan1 from "../assets/EVman1.png"
+import EvntMan2 from "../assets/EVman2.png"
+import EvntMan3 from "../assets/EVman3.png"
+import Exp1 from "../assets/EXP1.png"
+import Exp2 from '../assets/EXP2.png'
+import Analytics from '../assets/Anaylytics.png'
+
+
+
 export const projects: ProjectData[] = [
 {
   slug: "matero-customer-app",
@@ -135,8 +165,6 @@ export const projects: ProjectData[] = [
         "in real time — not hidden in the backend. " +
         "← Add: what specific user flow decisions you made here. " +
         "What did you simplify or restructure from the spec?",
-      image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop",
     },
     {
       title: "Cart & weight calculation — the hardest UX problem",
@@ -150,8 +178,6 @@ export const projects: ProjectData[] = [
         "← Add: how you designed this. What layout did you choose? " +
         "How did you show weight and vehicle info without overwhelming " +
         "the user? Did you test any variations?",
-      image:
-        "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=500&fit=crop",
     },
     {
       title: "Checkout — 6-part charge breakdown",
@@ -167,8 +193,6 @@ export const projects: ProjectData[] = [
         "← Add: how you structured the checkout screen. " +
         "How did you handle the GST toggle UX? " +
         "What did you prioritise above the fold?",
-      image:
-        "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=500&fit=crop",
     },
     {
       title: "Order tracking & OTP delivery confirmation",
@@ -185,8 +209,6 @@ export const projects: ProjectData[] = [
         "How prominent is the OTP? What happens visually when " +
         "the driver is near? Did you consider edge cases like " +
         "'customer not available'?",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
     },
   ],
 
@@ -297,42 +319,36 @@ export const projects: ProjectData[] = [
       description:
         "Mapped three end-to-end journeys — candidate, TPO, and corporate HR — and identified where they intersect: assessment data, candidate profiles, internship listings, and certificate issuance. These intersection points became the shared design system components.",
       deliverable: "Journey map per persona + intersection matrix",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop",
     },
     {
       title: "Information architecture for role-based access",
       description:
         "Designed a three-tier hierarchy for institutions (TPO → Department Coordinator → HOD) and a parallel structure for corporates (HR → Manager → Hiring Team). Mapped which data each role could view, edit, or approve. Defined shared entities that rendered differently per role.",
       deliverable: "AI map + role-permission matrix",
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
     },
     {
       title: "Assessment framework UX design",
       description:
         "Designed the four-layer evaluation system — psychometric (quarterly), foundational (unlimited attempts, 30 marks each), and technical at three levels (Basic / Intermediate / Advanced with 10 / 5 / 3 attempts respectively). Each layer required distinct interaction patterns: psychometric is situational, technical is progressive, foundational is remedial-friendly.",
       deliverable: "Assessment flow per layer + attempt logic specs",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
     },
     {
       title: "Career roadmap system — the 7-7-7 framework",
       description:
         "Designed the 21-day sprint system where post-assessment score determines roadmap level. Each sprint has 3–4 daily micro-tasks paired with videos and 10-question quizzes requiring 50% to unlock the next day. Sprint completion triggers a domain-aware project submission: GitHub for tech, Figma for design, Drive for non-tech, AutoCAD for engineering.",
       deliverable: "Daily task flow + domain-type submission screens",
-      image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=800&h=500&fit=crop",
     },
     {
       title: "Platform integrity features",
       description:
         "Designed four layered integrity flows: profile picture gate with server-side face detection; live webcam face-match at session start (75% confidence threshold, 3-attempt limit before flagging); annual qualification update modal in June (non-dismissable, blocks all platform routes until submitted); and pursuit qualification rules preventing multiple concurrent active qualifications.",
       deliverable: "Verification flow specs + edge case handling table",
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
     },
     {
       title: "Automated certificate flow",
       description:
         "Replaced a fully manual process (individual creation, printing, signing, scanning per intern) with a one-time company setup. Designed the letterhead/signature upload panel, the completion-trigger logic, the auto-generated PDF with student data and performance feedback, and the blocked state UX for when company assets are missing.",
       deliverable: "Certificate setup flow + generation state screens + API spec reference",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
     }
   ],
 
@@ -364,6 +380,7 @@ export const projects: ProjectData[] = [
     { metric: "Accreditation frameworks supported", value: "NAAC, NBA, NEP 2020" },
   ],
   // No testimonial — the documentation contains no verifiable user quotes
+  appStoreUrl: "https://apps.apple.com/in/app/skillpilots/id6757995819",
 },
 {
   slug: "sapphire-broking",
@@ -375,7 +392,7 @@ export const projects: ProjectData[] = [
   hero: SapphireThumbnail,
   year: "2025",
   role: "UI/UX Designer",
-  duration: "6 weeks (May – June 2025)",
+  duration: "5 Months (Oct – Mar 2025)",
   team: "1 Designer (me), 1 Product Manager, 3 Frontend Developers, 2 Backend Developers",
 
   overview:
@@ -452,42 +469,36 @@ export const projects: ProjectData[] = [
       description:
         "Audited four major Indian broking apps — Zerodha, Groww, Angel One, and Upstox — across onboarding, watchlist management, order placement, holdings view, and account management. Mapped strengths and gaps to identify design opportunities for Sapphire.",
       deliverable: "Competitor audit matrix with ratings and feature comparison",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
     },
     {
       title: "User research & personas",
       description:
         "Conducted user interviews with first-time investors and active traders. Synthesized findings into two primary personas representing the spectrum of Sapphire's target users. Identified core pain points around order complexity, portfolio clarity, and watchlist friction.",
       deliverable: "2 user personas + pain point map",
-      image: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop",
     },
     {
       title: "Information architecture",
       description:
         "Restructured the app's navigation around five primary sections: Watchlist, Trades, Orders, Holdings, and Account. Designed a bottom navigation model with quick-access order placement accessible from every tab. Mapped full user flows for the critical paths: stock search → add to watchlist, watchlist → place order, and portfolio → individual stock detail.",
       deliverable: "IA diagram + user flow maps",
-      image: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop",
     },
     {
       title: "Wireframes",
       description:
         "Created low-fidelity wireframes for all primary screens before moving to high fidelity. Tested wireframe flows with users to validate navigation structure and order placement clarity before investing in visual design.",
       deliverable: "Low-fidelity wireframes across all 5 sections",
-      image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&h=500&fit=crop",
     },
     {
       title: "Visual design system",
       description:
         "Built a design system grounded in Sapphire's brand: primary green (#00B074), tech core, law core, tax core, and white core. Typography hierarchy established for data-dense screens where readability at small sizes is critical. High-contrast color choices for buy (green) and sell (red) states following Indian market conventions.",
       deliverable: "Color palette, typography scale, component library",
-      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&h=500&fit=crop",
     },
     {
       title: "High fidelity screens",
       description:
         "Designed complete high-fidelity screens across all sections: Watchlist (real-time price list, search, alerts), Trades (order history, filters), Order placement (buy/sell form, confirmation), Holdings (portfolio summary, individual stock detail), Account (profile, settings, linked banks), and additional utility screens.",
       deliverable: "50+ high-fidelity screens across 5 core sections",
-      image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=500&fit=crop",
     },
   ],
 
@@ -497,9 +508,8 @@ export const projects: ProjectData[] = [
       description:
         "Real-time stock price list with search, sorting, and quick-add. Designed for fast scanning with clear price change indicators.",
       images: [
-        "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1624996379697-f01d168b1a52?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=800&h=1200&fit=crop",
+        Watchlist1,
+        Watchlist2,
       ],
     },
     {
@@ -507,9 +517,9 @@ export const projects: ProjectData[] = [
       description:
         "Complete trade history with filters by date, segment, and status. Designed for active traders who review their activity daily.",
       images: [
-        "https://images.unsplash.com/photo-1642390061910-0f71228000ab?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1642390061803-ec5ec28b49ec?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=1200&fit=crop",
+        Trade1,
+        Trade2,
+        Trade3,
       ],
     },
     {
@@ -517,9 +527,9 @@ export const projects: ProjectData[] = [
       description:
         "Buy and sell order placement with clear quantity, price, and order type inputs. Confirmation screen shows exact cost breakdown before execution.",
       images: [
-        "https://images.unsplash.com/photo-1634733988138-bf2c3a2a13fa?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1618042164219-62c820f10723?w=800&h=1200&fit=crop",
+        Order1,
+        Order2,
+        Order3,
       ],
     },
     {
@@ -527,9 +537,9 @@ export const projects: ProjectData[] = [
       description:
         "Portfolio overview showing total invested, current value, and day P&L at the top. Individual stock cards show quantity, average price, and return percentage.",
       images: [
-        "https://images.unsplash.com/photo-1544377193-33dcf4d68fb5?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=1200&fit=crop",
+        Holding1,
+        Holding2,
+        Holding3
       ],
     },
     {
@@ -537,10 +547,10 @@ export const projects: ProjectData[] = [
       description:
         "Profile, linked bank accounts, segment activation, and settings. Designed to be rarely visited but easy to navigate when needed.",
       images: [
-        "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&h=1200&fit=crop",
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=1200&fit=crop",
-      ],
+        Acc1,
+        Acc2,
+        Acc3
+      ]
     },
   ],
 
@@ -577,9 +587,9 @@ export const projects: ProjectData[] = [
   ],
 
   outcomes: [
-    { metric: "Screens designed", value: "50+" },
-    { metric: "Core user flows", value: "5" },
-    { metric: "Personas researched", value: "2" },
+    { metric: "Screens designed", value: "100+" },
+    // { metric: "Core user flows", value: "5" },
+    // { metric: "Personas researched", value: "2" },
     { metric: "Competitors audited", value: "4" },
     { metric: "Published on Behance", value: "Live" },
   ],
@@ -593,8 +603,8 @@ export const projects: ProjectData[] = [
   category: "Mobile Application Redesign",
   description:
     "A complete UI redesign of Events GO — an event management app for photographers and event companies — transforming a cluttered, outdated interface into a modern, dark-themed product built for real business workflows.",
-  image: "/images/eventsgo/thumbnail.png",
-  hero: "/images/eventsgo/hero.png",
+  image: EventGoThumbnail,
+    hero: EventGoThumbnail,
   year: "2025",
   role: "UI/UX Designer",
   duration: "placeholder",
@@ -623,49 +633,42 @@ export const projects: ProjectData[] = [
       description:
         "Mapped all existing screens and flows to understand the full scope of the product before redesigning. Identified screens that were purely operator-facing (dashboard, analytics, expenses) vs client-facing (gallery, payment summary) — these required different visual treatments.",
       deliverable: "Screen inventory + flow map + problem annotations",
-      image: "/images/eventsgo/process-audit.png",
     },
     {
       title: "Visual direction — dark luxury aesthetic",
       description:
         "Chose a deep dark background (#0D0D0D) with violet/purple (#7C3AED range) as the primary brand color. This direction was deliberate: dark themes signal premium quality in photography and media tools (Adobe, Lightroom, Final Cut), aligning Events GO with the professional tools its users already trust. Purple differentiated it from the flat-white aesthetic of generic business apps.",
       deliverable: "Color palette + typography scale + component decisions",
-      image: "/images/eventsgo/process-visual.png",
     },
     {
       title: "Navigation architecture",
       description:
         "Designed a bottom navigation bar with four tabs — Home, Event, Analytics, My Profile — each with distinct active/inactive states using purple highlight and icon fill. The nav bar remains consistent across all primary screens to reduce disorientation during fast task-switching, which is common during live events.",
       deliverable: "Nav bar component with 4 active states",
-      image: "/images/eventsgo/process-nav.png",
     },
     {
       title: "Onboarding flow redesign",
       description:
         "Redesigned the three-step sign up flow: Personal Details → Company Details (with brand logo upload, services selection, address) → Set Password. Each step is a full screen with a single focused task and a persistent Continue CTA at the bottom. The login screen uses a minimal centered card layout with mobile number + password.",
       deliverable: "Splash → Login → Sign up (3-step) → Dashboard flow",
-      image: "/images/eventsgo/process-onboarding.png",
     },
     {
       title: "Dashboard and event management screens",
       description:
         "Redesigned the home dashboard with a personalized greeting, six quick-action tiles (New Events, Show Events, Exposings, Customers, Payments, Expenses), and a live events list showing upcoming event cards with date badges and tab filtering (All, Haldi, Wedding, Reception). Event creation form was restructured into three clear sections: Event Details, Customer Details, and Event Package — with a date/time picker and package selector.",
       deliverable: "Dashboard, event list, create event, event detail screens",
-      image: "/images/eventsgo/process-dashboard.png",
     },
     {
       title: "Financial tracking flows",
       description:
         "Designed the Payments screen showing due amount, package breakdown, and payment history. Add Payment screen pre-fills package information (Silver — ₹35,000 final, ₹10,000 advanced, ₹25,000 remaining) and only asks for payment date and amount. Expenses screen separates Vendor and Employee expense types with clear tagging, contact numbers, and running totals. Analytics report shows income vs expenses vs total profit with a transaction timeline.",
       deliverable: "Payments, Add Payment, Expenses, Add Expense, Analytics screens",
-      image: "/images/eventsgo/process-financial.png",
     },
     {
       title: "Gallery and client-facing screens",
       description:
         "Designed the event photo gallery with a cover image, photo/video count, and masonry grid. Added QR code sharing — clients can scan to access the gallery directly without needing the app. The exposing list screen shows staff by event tab (Haldi, Wedding, Reception) with name, mobile, role (Candid/Videographer), and price per person — designed to be read quickly during on-ground coordination.",
       deliverable: "Gallery, QR share, Exposing list, My Packages screens",
-      image: "/images/eventsgo/process-gallery.png",
     },
   ],
 
@@ -673,13 +676,11 @@ export const projects: ProjectData[] = [
     {
       section: "Onboarding",
       description:
-        "Splash screen, Login, and 3-step Sign Up (Personal Details, Company Details, Set Password). Clean centered layout with full-bleed dark background and purple CTA buttons.",
+        "3-step Sign Up (Personal Details, Company Details, Set Password). Clean centered layout with full-bleed dark background and purple CTA buttons.",
       images: [
-        "/images/eventsgo/screens/splash.png",
-        "/images/eventsgo/screens/login.png",
-        "/images/eventsgo/screens/signup-personal.png",
-        "/images/eventsgo/screens/signup-company.png",
-        "/images/eventsgo/screens/signup-password.png",
+       Signup1,
+       Signup2,
+       Signup3
       ],
     },
     {
@@ -687,8 +688,8 @@ export const projects: ProjectData[] = [
       description:
         "Personalized greeting with 6 quick-action tiles and a live events list with upcoming event cards, date badges, and tab filters.",
       images: [
-        "/images/eventsgo/screens/dashboard.png",
-        "/images/eventsgo/screens/event-list.png",
+        Dash1,
+        Dash2
       ],
     },
     {
@@ -696,9 +697,9 @@ export const projects: ProjectData[] = [
       description:
         "Create event form (3 sections: Event Details, Customer Details, Event Package), event detail view with sub-event tabs (Haldi, Wedding, Reception), and date range picker.",
       images: [
-        "/images/eventsgo/screens/create-event.png",
-        "/images/eventsgo/screens/event-detail.png",
-        "/images/eventsgo/screens/date-picker.png",
+        EvntMan1,
+        EvntMan2,
+        EvntMan3
       ],
     },
     {
@@ -706,11 +707,8 @@ export const projects: ProjectData[] = [
       description:
         "Payment due summary with package breakdown, Add Payment form, Expenses list with Vendor/Employee tags, and Add Expense forms for both types.",
       images: [
-        "/images/eventsgo/screens/payments.png",
-        "/images/eventsgo/screens/add-payment.png",
-        "/images/eventsgo/screens/expenses.png",
-        "/images/eventsgo/screens/add-expense-vendor.png",
-        "/images/eventsgo/screens/add-expense-employee.png",
+        Exp1,
+        Exp2
       ],
     },
     {
@@ -718,32 +716,13 @@ export const projects: ProjectData[] = [
       description:
         "Business analytics report showing Income, Expenses, and Total Profit with a transaction-level breakdown and date range filter.",
       images: [
-        "/images/eventsgo/screens/analytics.png",
-      ],
-    },
-    {
-      section: "Gallery & Exposings",
-      description:
-        "Event photo gallery with cover image, photo/video count, masonry grid, and QR code sharing. Exposing staff list organized by event tab with role and pricing.",
-      images: [
-        "/images/eventsgo/screens/gallery.png",
-        "/images/eventsgo/screens/gallery-qr.png",
-        "/images/eventsgo/screens/exposings.png",
-      ],
-    },
-    {
-      section: "Packages & Customers",
-      description:
-        "My Packages screen with Silver (₹12,000), Gold (₹35,000), and Corporate Shoot (₹25,000) tiers. Customer list with contact details and anniversary tracking.",
-      images: [
-        "/images/eventsgo/screens/packages.png",
-        "/images/eventsgo/screens/customers.png",
+        Analytics
       ],
     },
   ],
 
   outcomes: [
-    { metric: "Screens redesigned", value: "20+" },
+    { metric: "Screens redesigned", value: "25+" },
     { metric: "Core workflows covered", value: "7" },
     { metric: "Visual direction", value: "Dark luxury" },
     { metric: "Financial flows designed", value: "Payments, Expenses, Analytics" },

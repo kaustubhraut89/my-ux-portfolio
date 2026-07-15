@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,6 +19,26 @@ const Navigation = () => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    if (location.pathname === "/" && location.state && (location.state as any).scrollTo) {
+      const targetId = (location.state as any).scrollTo;
+      const timer = setTimeout(() => {
+        scrollToSection(targetId);
+      }, 100);
+      // Clear navigation state so it doesn't scroll again on manual refresh
+      navigate("/", { replace: true, state: {} });
+      return () => clearTimeout(timer);
+    }
+  }, [location, navigate]);
+
+  const handleNavClick = (id: string) => {
+    if (location.pathname === "/") {
+      scrollToSection(id);
+    } else {
+      navigate("/", { state: { scrollTo: id } });
     }
   };
 
@@ -33,7 +56,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           <button
-            onClick={() => scrollToSection("hero")}
+            onClick={() => handleNavClick("hero")}
             className="font-heading text-2xl font-semibold tracking-tight text-foreground hover:text-accent transition-colors"
           >
             Kaustubh Raut
@@ -43,7 +66,7 @@ const Navigation = () => {
             {["Work", "About", "Contact"].map((item) => (
               <button
                 key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
+                onClick={() => handleNavClick(item.toLowerCase())}
                 className="font-body text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group"
               >
                 {item}
@@ -52,16 +75,12 @@ const Navigation = () => {
             ))}
           </div>
 
-          <a
-            href="#contact"
-            onClick={(e) => {
-    e.preventDefault();
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  }}
+          <button
+            onClick={() => handleNavClick("contact")}
             className="hidden md:inline-flex px-5 py-2.5 bg-foreground text-primary-foreground text-sm font-medium rounded-full hover:bg-accent transition-colors duration-300"
           >
             Let's Talk
-          </a>
+          </button>
         </div>
       </div>
     </motion.nav>

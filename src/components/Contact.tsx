@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, Dribbble } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, FileText } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -66,8 +66,8 @@ const Contact = () => {
             className="flex items-center justify-center gap-6"
           >
             {[
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
-              { icon: Dribbble, href: "#", label: "Dribbble" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/kaustubh-raut-0b73a6288/", label: "LinkedIn",target: "_blank" },
+              { icon: FileText, href: "https://drive.google.com/file/d/1q4hfBedZRUlMqKadMrl8PrRnFP_P1Heo/view?usp=sharing", label: "Dribbble" },
             ].map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
