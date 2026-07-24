@@ -34,6 +34,9 @@ const Hero = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const scrollToAbout = () => {
+  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   // One-time entrance variants — strings, so object ref never changes
   const entrance = {
@@ -82,7 +85,7 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="text-muted-foreground text-lg md:text-xl max-w-xl leading-relaxed mb-12"
             >
-              UI/UX Designer with 2 years of experience crafting user-centered experiences for web, mobile, ERP, and B2B SaaS products. Passionate about simplifying complex workflows through research, design, and product thinking. Combining design expertise with technical knowledge of backend systems and AI technologies to create impactful digital solutions.
+              UI/UX Designer with 2 years of experience creating user-friendly web, mobile, ERP, and B2B SaaS products. Passionate about solving complex problems through research, thoughtful design, and product thinking. I also bring knowledge of backend systems and AI, helping bridge the gap between design and technology.
             </motion.p>
 
             <motion.div
@@ -98,12 +101,12 @@ const Hero = () => {
                 View My Work
                 <ArrowDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
               </button>
-              <a
-                href="#about"
+              <button
+                onClick={scrollToAbout}
                 className="px-8 py-4 border border-border text-foreground font-medium rounded-full hover:bg-secondary transition-all duration-300"
               >
                 About Me
-              </a>
+              </button>
             </motion.div>
           </div>
 
